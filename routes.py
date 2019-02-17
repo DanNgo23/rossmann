@@ -61,6 +61,6 @@ def make_prediction():
 
 if __name__ == '__main__':
     # load ML model
-    model = joblib.load('rfm.pkl')
+    model = joblib.load('lr.pkl')
     # start API
     app.run(host='0.0.0.0', port=8000, debug=True)
