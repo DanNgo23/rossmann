@@ -2,7 +2,7 @@ import flask
 from flask import Flask, request, render_template
 from sklearn.externals import joblib
 import numpy as np
-import pickle
+#Simport pickle
 
 from utils import onehotCategorical
 
@@ -54,8 +54,9 @@ def make_prediction():
         entered_li.extend([month])
         entered_li.extend([schoolH])
         
-        pkl_file = open('lr.pkl', 'rb')
-        model = pickle.load(pkl_file)
+        #pkl_file = open('lr.pkl', 'rb')
+        #model = pickle.load(pkl_file)
+        model = joblib.load('lr.pkl')
         prediction = model.predict(np.array(entered_li).reshape(1, -1))
         #prediction = model.predict(entered_li.values.reshape(1, -1))
         label = str(np.squeeze(prediction.round(2)))
