@@ -2,6 +2,7 @@ import flask
 from flask import Flask, request, render_template
 from sklearn.externals import joblib
 import numpy as np
+import pickle
 
 from utils import onehotCategorical
 
@@ -61,7 +62,9 @@ def make_prediction():
 
 if __name__ == '__main__':
     # load ML model
-    model = joblib.load('lr.pkl')
+    #model = joblib.load('lr.pkl')
+    pkl_file = open('lr.pkl', 'rb')
+    model = pickle.load(pkl_file)
     # start API
     #app.run(host='0.0.0.0', port=8000, debug=True)
     app.run(debug=True)
