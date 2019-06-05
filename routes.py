@@ -53,7 +53,9 @@ def make_prediction():
         entered_li.extend([day])
         entered_li.extend([month])
         entered_li.extend([schoolH])
-
+        
+        pkl_file = open('lr.pkl', 'rb')
+        model = pickle.load(pkl_file)
         prediction = model.predict(np.array(entered_li).reshape(1, -1))
         #prediction = model.predict(entered_li.values.reshape(1, -1))
         label = str(np.squeeze(prediction.round(2)))
@@ -63,8 +65,8 @@ def make_prediction():
 if __name__ == '__main__':
     # load ML model
     #model = joblib.load('lr.pkl')
-    pkl_file = open('lr.pkl', 'rb')
-    model = pickle.load(pkl_file)
+    #pkl_file = open('lr.pkl', 'rb')
+    #model = pickle.load(pkl_file)
     # start API
     #app.run(host='0.0.0.0', port=8000, debug=True)
     app.run(debug=True)
